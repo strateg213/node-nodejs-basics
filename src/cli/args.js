@@ -1,5 +1,16 @@
-const parseArgs = () => {
-    // Write your code here 
-};
+import { argv } from 'node:process';
 
-parseArgs();
+const parseArgs = () => {
+    try {
+        argv.forEach((propName) => {
+            if (propName.includes('--')) {
+                let value = argv[argv.indexOf(propName) + 1];
+                console.log(`${propName} is ${value}`);
+            }
+        });
+        } catch (error) {
+            throw new Error ('ERROR!');
+        }
+    };
+
+    parseArgs();
